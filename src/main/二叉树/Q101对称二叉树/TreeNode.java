@@ -1,4 +1,4 @@
-package 二叉树.Q94二叉树的中序遍历;
+package 二叉树.Q101对称二叉树;
 
 /**
  * @ClassName: TreeNode

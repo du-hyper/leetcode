@@ -1,4 +1,6 @@
-package 二叉树.Q94二叉树的中序遍历;
+package 二叉树.Q94二叉树的中序遍历.function1;
+
+import 二叉树.Q94二叉树的中序遍历.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
