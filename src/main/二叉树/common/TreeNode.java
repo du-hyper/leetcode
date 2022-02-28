@@ -1,4 +1,4 @@
-package 二叉树.Q111二叉树的最小深度;
+package 二叉树.common;
 
 /**
  * @ClassName: TreeNode

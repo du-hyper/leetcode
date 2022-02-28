@@ -1,6 +1,6 @@
 package 二叉树.Q94二叉树的中序遍历.function1;
 
-import 二叉树.Q94二叉树的中序遍历.TreeNode;
+import 二叉树.common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,6 @@ public class Solution {
         TreeNode t1 = new TreeNode(1);
         TreeNode t2 = new TreeNode(2);
         TreeNode t3 = new TreeNode(3);
-
         t1.right = t2;
         t2.left = t3;
 

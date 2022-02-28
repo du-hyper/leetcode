@@ -1,6 +1,6 @@
 package 二叉树.Q111二叉树的最小深度.function1;
 
-import 二叉树.Q111二叉树的最小深度.TreeNode;
+import 二叉树.common.TreeNode;
 
 /**
  * @ClassName: Solution

@@ -1,6 +1,6 @@
 package 二叉树.Q101对称二叉树.function1;
 
-import 二叉树.Q101对称二叉树.TreeNode;
+import 二叉树.common.TreeNode;
 
 /**
  * @ClassName: Solution

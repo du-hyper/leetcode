@@ -1,6 +1,6 @@
 package 二叉树.Q100相同的树.function1;
 
-import 二叉树.Q100相同的树.TreeNode;
+import 二叉树.common.TreeNode;
 
 /**
  * @ClassName: Solution
