@@ -5,6 +5,13 @@ public class ListNode {
     private ListNode next;
     private int value;
 
+    public ListNode() {
+    }
+
+    public ListNode(int value) {
+        this.value = value;
+    }
+
     public ListNode getNext() {
         return next;
     }
