@@ -8,7 +8,29 @@ public class Solution {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(force("aaaacc"));
+        Long start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            // 暴力解
+            force("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+        }
+        Long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println("**************");
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            // 第一次优化
+            force2("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+        }
+        end = System.currentTimeMillis();
+        System.out.println(end - start);
+        System.out.println("**************");
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            // 最终优化
+            force3("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+        }
+        end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 
 
@@ -46,4 +68,95 @@ public class Solution {
         return max;
     }
 
+
+    public static String force2(String str) {
+        int start = 0, end = 0, len = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+
+            int p = i;
+            int q = i;
+
+            while (p > 0 && str.charAt(p - 1) == str.charAt(i)) {
+                int tempLen = i - (p - 1) + 1;
+                if (tempLen > len) {
+                    start = p - 1;
+                    end = i;
+                    len = tempLen;
+                }
+                p--;
+            }
+
+            while (q < str.length() - 1 && str.charAt(q + 1) == str.charAt(i)) {
+                int tempLen = q + 1 - i;
+                if (tempLen > len) {
+                    start = i;
+                    end = q;
+                    len = tempLen;
+                }
+                q++;
+            }
+
+            p -= 1;
+            q += 1;
+            while (p >= 0 && q < str.length() && str.charAt(p) == str.charAt(q)) {
+                int tempLen = q + 1 - p;
+                if (tempLen > len) {
+                    start = p;
+                    end = q;
+                    len = tempLen;
+                }
+                p--;
+                q++;
+            }
+        }
+        return str.substring(start, end + 1);
+    }
+
+    public static String force3(String str) {
+
+        char[] strArray = str.toCharArray();
+        int strLen = strArray.length;
+        int start = 0, end = 0, len = 0;
+
+        for (int i = 0; i < strLen; i++) {
+
+            int p = i;
+            int q = i;
+
+            while (p > 0 && strArray[p - 1] == strArray[i]) {
+                int tempLen = i - (p - 1) + 1;
+                if (tempLen > len) {
+                    start = p - 1;
+                    end = i;
+                    len = tempLen;
+                }
+                p--;
+            }
+
+            while (q < strLen - 1 && strArray[q + 1] == strArray[i]) {
+                int tempLen = q + 1 - i;
+                if (tempLen > len) {
+                    start = i;
+                    end = q;
+                    len = tempLen;
+                }
+                q++;
+            }
+
+            p -= 1;
+            q += 1;
+            while (p >= 0 && q < strLen && strArray[p] == strArray[q]) {
+                int tempLen = q + 1 - p;
+                if (tempLen > len) {
+                    start = p;
+                    end = q;
+                    len = tempLen;
+                }
+                p--;
+                q++;
+            }
+        }
+        return str.substring(start, end + 1);
+    }
 }
